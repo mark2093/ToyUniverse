@@ -1,0 +1,23 @@
+<td width="70%"><img src=/toyuniverse/images/>'.$row["Image"].'</td>
+
+<td width="70%"><img src=/toyuniverse/images/>'.$row["Image"].'</td>
+
+'.$product["Image"].'
+
+
+ <?php if($_SESSION['role']=='Admin'){ ?>
+      <li><a href="#">Admin Panel</a></li>
+      <?php } ?>
+
+
+<?php if($_SESSION['role']=='Member'){ ?>
+<?php}else{($_SESSION['role']=='Admin') ?>
+      <ul class="nav navbar-nav navbar-right">
+
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+           Admin <span class="caret"></span></a>
+      
+          <ul class="dropdown-menu">
+          <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Dashboard</a></li>

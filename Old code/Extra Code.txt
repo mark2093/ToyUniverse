@@ -1,0 +1,63 @@
+
+
+ <?php
+ $connect = mysqli_connect("localhost", "root", "", "toy_universe");
+
+ if(!empty($_POST))
+ {
+      $output = '';
+      $fname = mysqli_real_escape_string($connect, $_POST["fname"]);
+      $lname = mysqli_real_escape_string($connect, $_POST["lname"]);
+      $email = mysqli_real_escape_string($connect, $_POST["email"]);
+      $pass = mysqli_real_escape_string($connect, md5($_POST["pass"]));
+
+      $query = "
+      INSERT INTO users(fname, lname, email, pass)
+      VALUES('$fname', '$lname', '$email', md5('$pass'));
+      ";
+      if(mysqli_query($connect, $query))
+      {
+           $output .= '<label class="text-success">Data Inserted</label>';
+           $select_query = "SELECT * FROM users ORDER BY id DESC";
+           $result = mysqli_query($connect, $select_query);
+           $output .= '
+                <table class="table table-bordered">
+                     <tr>
+                          <th width="70%">Full Name</th>
+                          <th width="30%">View</th>
+                     </tr>
+           ';
+           while($row = mysqli_fetch_array($result))
+           {
+                $output .= '
+                     <tr>
+                          <td>' . $row["fname"] '</td>
+                          <td><input type="button" name="view" value="view" id="' . $row["id"] . '" class="btn btn-info btn-xs view_data" /></td>
+                     </tr>
+                ';
+           }
+           $output .= '</table>';
+      }
+      echo $output;
+ }
+ ?>
+
+
+<td>' . $row["fname"] . '</td>
+
+
+WHERE email = '$cemail'"
+
+WHERE email = '".$cemail."'
+
+$fname=$_POST['fname'];
+  $lname=$_POST['lname'];
+  $email=$_POST['email'];
+
+line 36
+
+//$message = "User Does Not Exist";
+//echo "<script type='text/javascript'>alert('$message');</script>";
+
+//header('Location: delete.php');
+window.location.href='points.php';

@@ -1,0 +1,71 @@
+body{
+  padding-top: 80px;
+}
+.navbar-fixed-top {
+    min-height: 50px;
+}
+/*
+#navbar{
+  /*background color
+  background-color: #800000;*/
+}
+#text{
+  background-color: #000000;
+  color: #FFFFFF;
+}
+#background-image{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  height: 600px;
+  background-image: url(../images/train.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 700px;
+  background-position: top center;
+  background-attachment: fixed;
+}
+#image-1{
+
+
+}
+#guide-image{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow:auto;;
+  height: 600px;
+  background-image: url(../images/works.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;;
+  background-attachment: scroll;;
+}
+.product-img{
+height: 200px;
+width: 230px;
+display:inline-grid;
+padding-right: 30px;
+
+}
+.navbar-brand{
+   height: 60px;
+}
+.nav >li >a {
+  padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;}
+
+
+/*.navbar-brand {
+  padding: 0px;
+}*/
+.navbar-brand>img {
+  max-height: 80px;
+  width: auto;
+}
+.navbar-nav > li.navbar-right {
+    float: right;
+  }
+
+.modal-footer {   border-top: 0px; }

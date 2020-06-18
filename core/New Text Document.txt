@@ -1,0 +1,275 @@
+<?PHP
+
+session_start();
+
+
+
+// Sign up database code
+
+
+require_once 'core/init.php';//make connection here
+if(isset($_POST['Register']))
+{
+    $fname=$_POST['fname'];//here getting result from the post array after submitting the form.
+    $lname=$_POST['lname'];//same
+    $email=$_POST['email'];//same
+    $pass=$_POST['pass'];//same
+
+
+
+    if($fname=='')
+    {
+        //javascript use for input checking
+        echo"<script>alert('Please enter First Name')</script>";
+exit();//this use if first is not work then other will not show
+    }
+
+    if($lname=='')
+    {
+        echo"<script>alert('Please enter Last Name')</script>";
+exit();
+    }
+    if($email=='')
+    {
+        echo"<script>alert('Please enter the email')</script>";
+    exit();
+    }
+    if($pass=='')
+    {
+        echo"<script>alert('Please enter the Password')</script>";
+    exit();
+    }
+
+//here query check weather if user already registered so can't register again.
+    $check_email_query="SELECT * FROM users WHERE email='$email'";
+    $run_query=mysqli_query($dbcon,$check_email_query);
+
+    if(mysqli_num_rows($run_query)>0)
+    {
+echo "<script>alert('Email $email is already exist in our database, Please try another one!')</script>";
+exit();
+    }
+//insert the user into the database.
+    $insert_user="INSERT INTO users (fname,lname,email,pass) VALUE ('$fname','$lname','$email','$pass')";
+
+
+    if(mysqli_query($dbcon,$insert_user))
+
+
+        echo"<script>alert('Accout Created!')</script>";
+    }
+?>
+
+
+
+
+
+
+
+
+$fname=$_POST['fname'];//here getting result from the post array after submitting the form.
+    $lname=$_POST['lname'];//same
+    $email=$_POST['email'];//same
+    $pass=$_POST['pass'];//same
+
+
+
+    if($fname=='')
+    {
+        //javascript use for input checking
+        echo"<script>alert('Please enter First Name')</script>";
+exit();//this use if first is not work then other will not show
+    }
+
+    if($lname=='')
+    {
+        echo"<script>alert('Please enter Last Name')</script>";
+exit();
+    }
+    if($email=='')
+    {
+        echo"<script>alert('Please enter the email')</script>";
+    exit();
+    }
+    if($pass=='')
+    {
+        echo"<script>alert('Please enter the Password')</script>";
+    exit();
+    }
+
+
+if(isset($_SESSION['email']))
+{
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Sign up database code-->
+<?php
+
+include 'core/init.php' ;//make connection here
+if(isset($_POST["submit"]) && $_POST["submit"]!=""){ 
+    $fname=$_POST['fname'];//here getting result from the post array after submitting the form.
+    $lname=$_POST['lname'];//same
+    $email=$_POST['email'];//same
+    $pass=$_POST['pass'];//same
+
+
+
+  /*  if($fname=='')
+    {
+        //javascript use for input checking
+        echo"<script>alert('Please enter First Name')</script>";
+exit();//this use if first is not work then other will not show
+    }
+
+    if($lname=='')
+    {
+        echo"<script>alert('Please enter Last Name')</script>";
+exit();
+    }
+    if($email=='')
+    {
+        echo"<script>alert('Please enter the email')</script>";
+    exit();
+    }
+    if($pass=='')
+    {
+        echo"<script>alert('Please enter the Password')</script>";
+    exit();
+    }
+
+//here query check weather if user already registered so can't register again.
+   // $check_email_query="SELECT * FROM users WHERE email='$email'";
+    //$run_query=mysqli_query($dbcon,$check_email_query);
+
+ /*   if(mysqli_num_rows($run_query)>0)
+    {
+echo "<script>alert('Email $email is already exist in our database, Please try another one!')</script>";
+exit();
+    }*/
+//insert the user into the database.
+    
+    $sql="INSERT INTO users (fname,lname,email,pass) VALUES ('$fname','$lname','$email','$pass')";
+//echo "$sql";
+$result=mysqli_query($db, $sql);
+echo "$sql";
+
+
+ /*   $result=mysqli_query($db,$sql);
+   
+if(empty($result))
+{
+  echo("Account Not Created");
+
+}
+else
+{
+  echo("Account created");
+  echo "$sql";
+}
+
+        //echo"<script>alert('Accout Created!')</script>";
+  */  
+?>
+
+
+
+
+<!--Login Code -->
+
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center" style="font-family: Impact;">Login</h1>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="login.php" method="post" >
+          <form class="form col-md-12 center-block">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Username" name="username">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Email" name="email">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" placeholder="Password" name="password">
+            </div>
+            <div class="form-group">
+              <a href="index.html" class="btn btn-lg btn-success btn-block" name="btn-login">Login</a>
+          <!--    <button class="btn btn-primary btn-lg btn-block" name="login">Sign In</button> -->
+
+              <span class="pull-right"><a href="#modal-register" data-toggle="modal" data-target="#modal-register" data-dismiss="modal">Register</a></span><span><a href="#">Need help?</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-1accordion2">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <!--END OF LOGIN-->
+  </body>
+</html>
+
+<?php
+   //session_start();
+
+    if(isset($_POST['password']))
+        {
+            $email=$_POST['email'];
+            $password=$_POST['password'];
+            include 'Db_connection.php';
+            $q="SELECT username,password from users where users='$email' and PASSWORD='$password'";
+            $res=$conn->query($q);
+            if(mysqli_num_rows($res) > 0) {
+                // output data of each row
+
+                while ($row = $res->fetch_assoc()) 
+                {
+
+
+                    $_SESSION['email']=$email;
+                    echo "<script>
+                    window.location.href='index.php';
+                    alert('Login sucessfull');
+                    </script>";
+                    
+                }
+            }
+            else
+            {
+                    echo '<script language="javascript">';
+                    echo 'alert("Invalid Id and Password")';
+                    echo '</script>';
+               
+
+            }
+            $conn->close();
+        }
+
+    
+?>
